@@ -1,3 +1,27 @@
+#prev{
+    height: 50px;
+    width: 50px;
+    background-color: red;
+}
+
+#next{
+    height: 50px;
+    width: 50px;
+    background-color: green;
+}
+
+.hidden-month{
+    display: none;
+}
+
+.active-month{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .holiday{
     color:red;
 }
