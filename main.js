@@ -9,7 +9,7 @@ $(document).ready(function () {
        method: "GET",
        success: function (data) {
           console.log(data.response)
- 
+        //creo il ciclo for per stampare i giorni del mese in pagina
           var daysNumber = moment("2018-01-01", "YYYY-MM-DD").daysInMonth();
           
           for (i = 1; i <= daysNumber; i++) {
@@ -18,16 +18,21 @@ $(document).ready(function () {
              var currentDay = moment(dayToday).format("dddd D MMMM");
              $(".mese").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
           }
+
+          //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
           for (var i = 0; i < data.response.length; i++) {
              console.log(data.response[i].date)
  
-             var feste = data.response[i].date  
-             $(".mese [data-date='" + feste + "']").css("color","red").append(" "+data.response[i].name)
+             var dataFeste = data.response[i].date;
+             
+
+             var nomeFesta = data.response[i].name;
+
+             var giornoDiFesta = $(".mese [data-date='" + dataFeste + "']");
+
+             giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
                         
           }
- 
-          
- 
  
        },
        error: function () {
