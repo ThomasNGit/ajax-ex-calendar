@@ -75,11 +75,11 @@ function conteggioMesi(month){
     for (i = 1; i <= giorniMese; i++) {
        //variabile che valorizza la data
        var currentDate = moment('2018-' + month + '-' + i , 'YYYY-MM-D').format('YYYY-MM-DD');
-       console.log(currentDate)
+
        //creo la variabile che mi stamperà in pagina l'output
        var currentDay = moment(currentDate).format("dddd DD MMMM");
        //stampo in pagina
-       $(".mese").append('<li data-date="' + currentDate + '">' + currentDay + '</li>');
+       $(".mese").append('<div data-date="' + currentDate + '">' + currentDay + '</div>');
     }
  }
  
@@ -93,15 +93,13 @@ function conteggioMesi(month){
           //controllo per verificare se il mese ha effettivamente una festa controllando l'array di response che mi genera l'API
           if (data.response.length > 0) {
              for (var i = 0; i < data.response.length; i++) {
-                console.log(data.response.length)
-                console.log(data.response[i].date)
  
                 //Creo una variabile coi valori che mi passa l'API
                 var feste = data.response[i].date;
 
                 var nomeFesta = data.response[i].name;
                 //sostituisco in pagina gli elementi che hanno come attributo un valore uguale alla mia festività , li coloro di rosso e APPEND il nome della festività (altra chiave della mia api)
-                $(".mese [data-date='" + feste + "']").addClass("holiday").append(" " + nomeFesta)
+                $(".mese [data-date='" + feste + "']").removeClass("white").addClass("holiday").append("<br>" + nomeFesta)
              }
  
           }
