@@ -3,548 +3,112 @@
 // Evidenziare le festività nella lista
 $(document).ready(function () {
 
-        //chiamate mese 1
-        $.ajax({
-        url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
-        method: "GET",
-        success: function (data) {
-            console.log(data.response)
-            //creo il ciclo for per stampare i giorni del mese in pagina
-            var daysNumber = moment("2018-01-01", "YYYY-MM-DD").daysInMonth();
+    var month = 1;
+
+    conteggioMesi(month); //richiamo la funzione del conteggio giorni
+    
+    festa(month);   //richiamo la funzione delle feste
+    
+    var currMonth = $(".mese"); //salvo la variabile per richiamare il contenitore mese
             
-            for (i = 1; i <= daysNumber; i++) {
-                var dayToday = "2018-01-" + i;
-                var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                var currentDay = moment(dayToday).format("dddd D MMMM");
-                $(".mese-1").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-            }
 
-            //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-            for (var i = 0; i < data.response.length; i++) {
-                console.log(data.response[i].date)
-    
-                var dataFeste = data.response[i].date;
-                
-                var nomeFesta = data.response[i].name;
-
-                var giornoDiFesta = $(".mese-1 [data-date='" + dataFeste + "']");
-
-                if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-
-                giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-
-                }
-                            
-            }
-    
-        },
-        error: function () {
-            alert("Error");
-        }
-        });
-
-        // chiamata mese 2
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=1",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-02-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-02-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-2").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-2 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            // chiamata mese 3
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=2",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-03-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-03-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-3").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-3 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            // chiamata mese 4
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=3",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-04-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-04-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-4").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-4 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            // chiamata mese 5
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=4",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-05-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-05-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-5").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-5 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            // chiamata mese 6
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=5",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-06-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-06-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-6").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-6 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            // chiamata mese 7
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=6",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-07-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-07-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-7").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-7 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            // chiamata mese 8
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=7",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-08-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-08-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-8").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-8 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            // chiamata mese 9
-        $.ajax({
-            url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=8",
-            method: "GET",
-            success: function (data) {
-                console.log(data.response)
-                //creo il ciclo for per stampare i giorni del mese in pagina
-                var daysNumber = moment("2018-09-01", "YYYY-MM-DD").daysInMonth();
-                
-                for (i = 1; i <= daysNumber; i++) {
-                    var dayToday = "2018-09-" + i;
-                    var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                    var currentDay = moment(dayToday).format("dddd D MMMM");
-                    $(".mese-9").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                }
-    
-                //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                for (var i = 0; i < data.response.length; i++) {
-                    console.log(data.response[i].date)
-        
-                    var dataFeste = data.response[i].date;
-                    
-                    var nomeFesta = data.response[i].name;
-    
-                    var giornoDiFesta = $(".mese-9 [data-date='" + dataFeste + "']");
-    
-                    if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-    
-                    giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-    
-                    }
-                                
-                }
-        
-            },
-            error: function () {
-                alert("Error");
-            }
-            });
-
-            //chiamata mese 10
-            $.ajax({
-                url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=9",
-                method: "GET",
-                success: function (data) {
-                    console.log(data.response)
-                    //creo il ciclo for per stampare i giorni del mese in pagina
-                    var daysNumber = moment("2018-10-01", "YYYY-MM-DD").daysInMonth();
-                    
-                    for (i = 1; i <= daysNumber; i++) {
-                        var dayToday = "2018-10-" + i;
-                        var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                        var currentDay = moment(dayToday).format("dddd D MMMM");
-                        $(".mese-10").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                    }
-        
-                    //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                    for (var i = 0; i < data.response.length; i++) {
-                        console.log(data.response[i].date)
-            
-                        var dataFeste = data.response[i].date;
-                        
-                        var nomeFesta = data.response[i].name;
-        
-                        var giornoDiFesta = $(".mese-10 [data-date='" + dataFeste + "']");
-        
-                        if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-        
-                        giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-        
-                        }
-                                    
-                    }
-            
-                },
-                error: function () {
-                    alert("Error");
-                }
-                });
-
-                //chiamata mese 11
-                $.ajax({
-                    url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=10",
-                    method: "GET",
-                    success: function (data) {
-                        console.log(data.response)
-                        //creo il ciclo for per stampare i giorni del mese in pagina
-                        var daysNumber = moment("2018-11-01", "YYYY-MM-DD").daysInMonth();
-                        
-                        for (i = 1; i <= daysNumber; i++) {
-                            var dayToday = "2018-11-" + i;
-                            var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                            var currentDay = moment(dayToday).format("dddd D MMMM");
-                            $(".mese-11").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                        }
-            
-                        //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                        for (var i = 0; i < data.response.length; i++) {
-                            console.log(data.response[i].date)
-                
-                            var dataFeste = data.response[i].date;
-                            
-                            var nomeFesta = data.response[i].name;
-            
-                            var giornoDiFesta = $(".mese-11 [data-date='" + dataFeste + "']");
-            
-                            if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-            
-                            giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-            
-                            }
-                                        
-                        }
-                
-                    },
-                    error: function () {
-                        alert("Error");
-                    }
-                    });
-
-                    //chiamata mese 12
-                    $.ajax({
-                        url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=11",
-                        method: "GET",
-                        success: function (data) {
-                            console.log(data.response)
-                            //creo il ciclo for per stampare i giorni del mese in pagina
-                            var daysNumber = moment("2018-12-01", "YYYY-MM-DD").daysInMonth();
-                            
-                            for (i = 1; i <= daysNumber; i++) {
-                                var dayToday = "2018-12-" + i;
-                                var dateFormat = moment(dayToday).format("YYYY-MM-DD")
-                                var currentDay = moment(dayToday).format("dddd D MMMM");
-                                $(".mese-12").append('<li data-date="' + dateFormat +'">'+ currentDay +'</li>');
-                            }
-                
-                            //ciclo for che controlla i giorni di festa passati dalla chiamata ajax e che gli assegna una classe per colorarli di rosso
-                            for (var i = 0; i < data.response.length; i++) {
-                                console.log(data.response[i].date)
-                    
-                                var dataFeste = data.response[i].date;
-                                
-                                var nomeFesta = data.response[i].name;
-                
-                                var giornoDiFesta = $(".mese-12 [data-date='" + dataFeste + "']");
-                
-                                if(giornoDiFesta){ //controllo che verifica che ci sia un giorno di festa
-                
-                                giornoDiFesta.addClass("holiday").append(" " + nomeFesta);
-                
-                                }
-                                            
-                            }
-                    
-                        },
-                        error: function () {
-                            alert("Error");
-                        }
-                        });
-            
-    
             //funzione al click per il mese successivo
             $("#next").click(function(){
 
-                var curMonth = currentMonth();
+               if(month == 12){  //se il mese è il dodicesimo, torna al primo
 
-                function currentMonth(){
+                   month = 1
 
-                    meseAttuale = $("ul.active-month");
+                   currMonth.html("");
 
-                    meseAttuale.removeClass("active-month");
+                   conteggioMesi(month);
 
-                    if(meseAttuale.hasClass("last")){
+                   festa(month);
 
-                        $("ul.first").addClass("active-month");
+               } else { //altrimenti incrementa la variabile mese e stampa in pagina l'output del mese successivo
 
-                    } else{
+                   month++;
+                   currMonth.html("");
 
-                    meseAttuale.next("ul").addClass("active-month")
-                    }
-                }
+                   conteggioMesi(month);
+
+                   festa(month);
+               }
 
             })
 
             //funzione al click per il mese precedente
             $("#prev").click(function(){
 
-                var curMonth = currentMonth();
+                if(month == 1){  //se il mese è il primo, torna al dodicesimo
 
-                function currentMonth(){
+                    month = 12
+ 
+                    currMonth.html("");
 
-                    meseAttuale = $("ul.active-month");
+                    conteggioMesi(month);
 
-                    meseAttuale.removeClass("active-month");
+                    festa(month);
 
-                    if(meseAttuale.hasClass("first")){
+                } else { //altrimenti decrementa la variabile mese e stampa in pagina l'output del mese successivo
+                    month--;
+                    currMonth.html("");
 
-                        $("ul.last").addClass("active-month");
+                    conteggioMesi(month);
 
-                    } else{
-
-                    meseAttuale.prev("ul").addClass("active-month")
-                    }
+                    festa(month);
                 }
 
             })
 
 })
+
+
+//funzione per stampare i giorni del mese
+function conteggioMesi(month){
+
+    //imposto una variabile per calcolare i giorni del mese del mese che imposto
+    var giorniMese = moment("2018-" + month, "YYYY-MM").daysInMonth();
+    
+    
+    //apro un ciclo for sulla lunghezza del mese che ho selezionato nella mia variabile
+    for (i = 1; i <= giorniMese; i++) {
+       //variabile che valorizza la data
+       var currentDate = moment('2018-' + month + '-' + i , 'YYYY-MM-D').format('YYYY-MM-DD');
+       console.log(currentDate)
+       //creo la variabile che mi stamperà in pagina l'output
+       var currentDay = moment(currentDate).format("dddd DD MMMM");
+       //stampo in pagina
+       $(".mese").append('<li data-date="' + currentDate + '">' + currentDay + '</li>');
+    }
+ }
  
+ //funzione per effettuare la chiamata AJAX
+ function festa(month){
+    $.ajax({
+       url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=" + (month - 1),
+       method: "GET",
+       
+       success: function (data) {
+          //controllo per verificare se il mese ha effettivamente una festa controllando l'array di response che mi genera l'API
+          if (data.response.length > 0) {
+             for (var i = 0; i < data.response.length; i++) {
+                console.log(data.response.length)
+                console.log(data.response[i].date)
+ 
+                //Creo una variabile coi valori che mi passa l'API
+                var feste = data.response[i].date;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                var nomeFesta = data.response[i].name;
+                //sostituisco in pagina gli elementi che hanno come attributo un valore uguale alla mia festività , li coloro di rosso e APPEND il nome della festività (altra chiave della mia api)
+                $(".mese [data-date='" + feste + "']").addClass("holiday").append(" " + nomeFesta)
+             }
+ 
+          }
+       },
+       error: function () {
+          alert("ERROR");
+       }
+    })
+ }
+ 
